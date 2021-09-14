@@ -1,26 +1,33 @@
 import React from 'react';
 import { Form } from 'semantic-ui-react';
 import ButtonSaveOrCansel from './ButtonSaveOrCansel';
+import EntryForm from './EntryForm';
 
-function NewEntryForm() {
+function NewEntryForm(props) {
+
+  const {
+    description,
+    setDescription,
+    value,
+    setValue,
+    isExpensive = false,
+    setIsExpensive,
+    addEntry,
+  } = props;
+
   return (
     <Form unstackable align='right'>
-      <Form.Group>
-        <Form.Input 
-          icon='tags'
-          width={12}
-          placeholder='new shiny thing'
-          label='Description'
-        />
-        <Form.Input 
-          icon='dollar'
-          iconPosition='left'
-          width={4}
-          placeholder='100.00'
-          label='Value'
-        />
-      </Form.Group>
-      <ButtonSaveOrCansel/>
+      <EntryForm
+        description={description} 
+        setDescription={setDescription}
+        value={value}
+        setValue={setValue}
+        isExpensive={isExpensive} 
+        setIsExpensive={setIsExpensive}
+      />
+      <ButtonSaveOrCansel 
+        addEntry={addEntry}
+      />
     </Form>
   )
 }

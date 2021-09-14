@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Grid,
           Icon,
           Segment } from 'semantic-ui-react';
@@ -6,24 +6,36 @@ import { Grid,
 function EntryLine(props) {
 
   const {
+    id,
     description,
-    sum,
-    isExpensive
+    value,
+    isExpensive = false,
+    deleteEntry,
+    editEntry,
   } = props;
 
   return (
-    <Segment color={isExpensive? 'red': 'green'}>
-        <Grid columns={3} textAlign='right'>
-          <Grid.Row>
-            <Grid.Column textAlign='left' width={10}>{description}</Grid.Column>
-            <Grid.Column textAlign='right' width={3}>{sum}</Grid.Column>
-            <Grid.Column textAlign='right' width={3}>
-              <Icon name='edit'/>
-              <Icon name='trash' boarded='true'/>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Segment>
+    <Fragment>
+      <Segment color={isExpensive? 'red': 'green'}>
+          <Grid columns={3} textAlign='right'>
+            <Grid.Row>
+              <Grid.Column textAlign='left' width={10}>{description}</Grid.Column>
+              <Grid.Column textAlign='right' width={3}>{value}</Grid.Column>
+              <Grid.Column textAlign='right' width={3}>
+                <Icon 
+                  name='edit'
+                  onClick={() => editEntry(id)}
+                />
+                <Icon 
+                  name='trash' 
+                  boarded='true' 
+                  onClick={() => deleteEntry(id)}
+                />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
+      </Fragment>
   )
 }
 
