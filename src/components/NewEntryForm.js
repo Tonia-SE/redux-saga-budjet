@@ -1,19 +1,20 @@
 import React from 'react';
 import { Form } from 'semantic-ui-react';
+import useEntryDeteils from '../hooks/useEntryDeteils';
 import ButtonSaveOrCansel from './ButtonSaveOrCansel';
 import EntryForm from './EntryForm';
 
-function NewEntryForm(props) {
+function NewEntryForm() {
 
-  const {
-    description,
-    setDescription,
-    value,
-    setValue,
-    isExpensive = false,
-    setIsExpensive,
-    addEntry,
-  } = props;
+  const { 
+    description, 
+    setDescription, 
+    value, 
+    setValue, 
+    isExpensive, 
+    setIsExpensive, 
+    addEntry 
+  } = useEntryDeteils();
 
   return (
     <Form unstackable align='right'>
@@ -25,9 +26,7 @@ function NewEntryForm(props) {
         isExpensive={isExpensive} 
         setIsExpensive={setIsExpensive}
       />
-      <ButtonSaveOrCansel 
-        addEntry={addEntry}
-      />
+      <ButtonSaveOrCansel addEntry={addEntry}/>
     </Form>
   )
 }

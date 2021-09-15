@@ -12,7 +12,7 @@ function EntryForm(props) {
     setValue,
     isExpensive, 
     setIsExpensive
-  } = props
+  } = props;
 
   return (
     <Fragment>
@@ -40,7 +40,6 @@ function EntryForm(props) {
           toggle
           label='is expense'
           checked={isExpensive}
-          // onClick={() => setIsExpensive(!isExpensive)}
           onClick={() => setIsExpensive((oldState) => !oldState)}
         >
         </Checkbox>
