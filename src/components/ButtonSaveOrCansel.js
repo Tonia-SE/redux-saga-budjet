@@ -11,7 +11,7 @@ function ButtonSaveOrCansel({ addEntry }) {
       <Button.Or/>
       <Button 
         primary
-        onClick={addEntry}
+        onClick={() => addEntry()}
       >
         OK
       </Button>

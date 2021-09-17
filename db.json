@@ -1,34 +1,30 @@
 {
   "entries": [
     {
-      "id": 1,
-      "description": "Work income",
-      "value": 1000,
-      "isExpensive": false
+      "id": 3,
+      "description": "Power bill"
     },
     {
-      "id": 2,
-      "description": "Water bill",
-      "value": 10,
-      "isExpensive": true
+      "id": 2
     },
+    {
+      "id": "e63d8207-e782-4447-bfb3-216177205e35",
+      "description": "555"
+    }
+  ],
+  "values": [
     {
       "id": 3,
-      "description": "Power bill",
       "value": 20,
       "isExpensive": true
     },
     {
-      "id": 3,
-      "description": "Food",
-      "value": 110,
-      "isExpensive": true
+      "id": 2
     },
     {
-      "id": 4,
-      "description": "Rent",
-      "value": 300,
-      "isExpensive": false
+      "id": "e63d8207-e782-4447-bfb3-216177205e35",
+      "isExpensive": true,
+      "value": "555"
     }
   ]
 }

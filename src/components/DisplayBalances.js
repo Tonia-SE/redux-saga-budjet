@@ -11,7 +11,7 @@ function DisplayBalances({ totalIncomes, totalExpenses }) {
             <Grid.Column>
               <DisplayBallance 
                 title={'Income:'} 
-                value={`${totalIncomes}$`} 
+                value={totalIncomes} 
                 color={'green'}
               />
             </Grid.Column>
@@ -19,7 +19,7 @@ function DisplayBalances({ totalIncomes, totalExpenses }) {
             <Grid.Column>
               <DisplayBallance 
                 title={'Expenses:'} 
-                value={`${totalExpenses}$`} 
+                value={totalExpenses} 
                 color={'red'}
               />
             </Grid.Column>

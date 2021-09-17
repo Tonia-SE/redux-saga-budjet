@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Container } from 'semantic-ui-react';
 import DisplayBallance from './components/DisplayBallance';
 import DisplayBalances from './components/DisplayBalances';
@@ -8,12 +8,15 @@ import MainHeader from './components/MainHeader';
 import ModalEdit from './components/ModalEdit';
 import NewEntryForm from './components/NewEntryForm';
 import './App.css';
+import { getAllEntries } from './actions/entries.actions';
+// import { testSaga } from './sagas/testSaga';
 
 function App() {
 
   const entries = useSelector(state => state.entries);
   const { isOpen, id } = useSelector(state => state.modals);
-  const [entry, setEntry] = useState();
+  const dispatch = useDispatch();
+  const [entry, setEntry] = useState({});
   const [totalExpenses, setTotalExpenses] = useState(0);
   const [totalIncomes, setTotalIncomes] = useState(0);
   const [total, setTotal] = useState(0);
@@ -22,7 +25,7 @@ function App() {
     const index = entries.findIndex(entry => entry.id === id);
     setEntry(entries[index]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen, id])
+  }, [isOpen, id, entries])
 
   useEffect(() => {
     let totalIncomes = 0;
@@ -38,7 +41,12 @@ function App() {
     setTotalIncomes(totalIncomes);
     setTotal(totalIncomes - totalExpenses);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [entries])
+  }, [entries]);
+
+  useEffect(() => {
+    dispatch(getAllEntries());
+    // dispatch({type: 'TEST_SAGA'});
+  }, [dispatch]);
 
   return (
     <Container>
@@ -47,7 +55,7 @@ function App() {
       <DisplayBallance 
         size={'small'} 
         title={'Your balance:'}
-        value={`${total}$`}
+        value={total}
       />
 
       <DisplayBalances 
